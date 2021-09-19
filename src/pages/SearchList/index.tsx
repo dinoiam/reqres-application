@@ -1,18 +1,25 @@
+import InfiniteScroll from '@src/components/layout/InfiniteScroll';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { useSearchList } from './hooks';
+
+const List = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  > div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+`;
 
 export const SearchList: () => JSX.Element = () => {
-  const history = useHistory();
+  const { loadMore, elements, onFetchUsers } = useSearchList();
 
-  function handleClick() {
-    history.push('/profile');
-  }
   return (
-    <div>
-      SEARCH LIST
-      <button type="button" onClick={handleClick}>
-        Go to the profile
-      </button>
-    </div>
+    <InfiniteScroll loadMore={loadMore} callback={onFetchUsers}>
+      <List>{elements}</List>
+    </InfiniteScroll>
   );
 };
