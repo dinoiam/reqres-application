@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { axiosInstance } from '@src/api/axios';
 import { LoginRequest, LoginRequestSuccessful } from '@src/types/auth';
 
@@ -24,5 +24,7 @@ export const login = createAsyncThunk<
     return thunkAPI.rejectWithValue({ errorMessage: errorMessage });
   }
 });
+
+export const logout = createAction('logout');
 
 export const loginFullfilledType = login.fulfilled.type;
