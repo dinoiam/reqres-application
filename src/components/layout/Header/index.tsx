@@ -9,15 +9,20 @@ const HeaderComponent = styled.header`
   display: flex;
   padding: 20px;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 `;
 
+const LogOut = styled(Button)`
+  margin-left: auto;
+`;
+
 export const Header: () => JSX.Element = () => {
-  const { onClickLogout } = useHeader();
+  const { onClickLogout, showGoBack, onClickGoBack } = useHeader();
   return (
     <HeaderComponent>
-      <Button onClick={onClickLogout}>LOGOUT</Button>
+      {showGoBack && <Button onClick={onClickGoBack}>BACK</Button>}
+      <LogOut onClick={onClickLogout}>LOGOUT</LogOut>
     </HeaderComponent>
   );
 };
