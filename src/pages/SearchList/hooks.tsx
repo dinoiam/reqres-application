@@ -15,7 +15,8 @@ export const useSearchList = () => {
     () => dispatch(fetchUsers({ page: nextPage })),
     [dispatch, nextPage]
   );
-  const onClickCard = useCallback(() => history.push('/profile'), [history]);
+  const onCardClick = useCallback((userId) => history.push(`/profile/${userId}`), [history]);
+  const onAddNewUserClick = useCallback(() => history.push(`/profile/`), [history]);
   const elements = userslist.map((user) => (
     <UserCard
       key={user.id}
@@ -23,13 +24,14 @@ export const useSearchList = () => {
       lastname={user.last_name}
       email={user.email}
       image={user.avatar}
-      onClick={onClickCard}
+      onClick={() => onCardClick(user.id)}
     ></UserCard>
   ));
 
   return {
     elements,
     loadMore: moreUsers,
-    onFetchUsers
+    onFetchUsers,
+    onAddNewUserClick
   };
 };
