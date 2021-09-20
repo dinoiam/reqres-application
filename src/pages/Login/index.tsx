@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputText } from '@src/components/dumb/InputText';
+import { Input } from '@src/components/dumb/Input';
 import styled from 'styled-components';
 import { useLogin } from './hooks';
 
@@ -24,8 +24,8 @@ export const Login = (): JSX.Element => {
   return (
     <LoginPage>
       <LoginForm>
-        <InputText type="email" onChange={setEmail} placeholder={'Email'}></InputText>
-        <InputText type="password" onChange={setPassword} placeholder={'Password'}></InputText>
+        <Input type="email" onChange={setEmail} placeholder={'Email'}></Input>
+        <Input type="password" onChange={setPassword} placeholder={'Password'}></Input>
         <button disabled={buttonLoginDisabled} onClick={onClickLogin}>
           LOGIN
         </button>
