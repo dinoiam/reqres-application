@@ -5,7 +5,8 @@ const UserCardComponent = styled.div`
   border: 1px solid black;
   border-radius: 5px;
   display: flex;
-  width: 400px;
+  max-width: 400px;
+  cursor: pointer;
 `;
 
 const UserCardInfo = styled.div`
