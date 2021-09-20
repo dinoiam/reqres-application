@@ -1,19 +1,32 @@
+import { Form } from '@src/components/layout/Form';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { useCreateProfile, useUpdateProfile } from './hooks';
+import { ProfileViewProps } from './types';
 
-export const Profile: () => JSX.Element = () => {
-  const history = useHistory();
+const StyledProfileView = styled.div`
+  padding: 50px;
+`;
 
-  function handleClick() {
-    history.push('/');
-  }
-
+export const ProfileView = ({
+  buttonLabel,
+  formElements,
+  handleClick,
+  onClickButton
+}: ProfileViewProps): JSX.Element => {
   return (
-    <div>
-      PROFILE
+    <StyledProfileView>
       <button type="button" onClick={handleClick}>
         Go to the search
       </button>
-    </div>
+      <Form
+        formElements={formElements}
+        buttonLabel={buttonLabel}
+        onClickButton={onClickButton}
+      ></Form>
+    </StyledProfileView>
   );
 };
+
+export const CreateProfile = (): JSX.Element => ProfileView(useCreateProfile());
+export const UpdateProfile = (): JSX.Element => ProfileView(useUpdateProfile());
