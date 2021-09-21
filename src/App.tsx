@@ -3,13 +3,13 @@ import { Login } from '@src/pages/Login';
 import { Home } from '@src/pages/Home';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ConditionalRoute } from './components/hoc/ConditionalRoute';
-import { useSelector } from 'react-redux';
 import { getIsUserAuthenticated } from './redux/reducer/auth';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { ErrorPanel } from './components/layout/ErrorPanel';
+import { useAppSelector } from './hooks/useReduxhooks';
 
 function App(): JSX.Element {
-  const isUserAutenticated = useSelector(getIsUserAuthenticated);
+  const isUserAutenticated = useAppSelector(getIsUserAuthenticated);
 
   return (
     <>

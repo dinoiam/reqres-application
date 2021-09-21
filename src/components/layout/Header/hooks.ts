@@ -1,7 +1,7 @@
-import { logout } from '@src/redux/action/auth';
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { logout } from '@src/redux/action/auth';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useAppDispatch } from '@src/hooks/useReduxhooks';
 
 type UseHeaderType = () => {
   onClickLogout: () => void;
@@ -10,7 +10,7 @@ type UseHeaderType = () => {
 };
 
 export const useHeader: UseHeaderType = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const location = useLocation();
   const showGoBack = location.pathname != '/';

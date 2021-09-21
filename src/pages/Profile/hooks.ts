@@ -1,5 +1,5 @@
 import { InputElement } from '@src/components/layout/Form/types';
-import { useAppSelector } from '@src/hooks/useReduxhooks';
+import { useAppDispatch, useAppSelector } from '@src/hooks/useReduxhooks';
 import { createUser, fetchUsersById, updateUser } from '@src/redux/action/user';
 import { getUserById } from '@src/redux/reducer/users';
 import { useDispatch } from 'react-redux';
@@ -34,7 +34,7 @@ export const getFormElements = (email = '', firstName = '', lastName = ''): Arra
 ];
 
 export const useUpdateProfile = (): ProfileViewProps => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId } = useParams<{ userId: string }>();
   const user = useAppSelector((state) => getUserById(state, userId));
   if (!user) {
@@ -52,7 +52,7 @@ export const useUpdateProfile = (): ProfileViewProps => {
 };
 
 export const useCreateProfile = (): ProfileViewProps => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const formElements = getFormElements();
   const onClickButton = ({ email, firstName, lastName }: any) => {
     dispatch(createUser({ email, firstName, lastName }));

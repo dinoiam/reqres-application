@@ -4,21 +4,22 @@ import { getNextPage, getUsersList, getMoreUsers } from '@src/redux/reducer/user
 import { User } from '@src/models/user';
 import { filterArrayOfObjectsBy } from '@src/utils/array';
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { useHistory } from 'react-router-dom';
 import { FilteredUserListProps, ListViewProps } from './types';
+import { useAppSelector, useAppDispatch } from '@src/hooks/useReduxhooks';
 
 export const useGetUsers = (): { usersList: User[] } => {
-  const usersList = useSelector(getUsersList);
+  const usersList = useAppSelector(getUsersList);
   return {
     usersList
   };
 };
 
 export const useFetchMoreUser = (): Pick<ListViewProps, 'loadMore' | 'onFetchMore'> => {
-  const dispatch = useDispatch();
-  const nextPage = useSelector(getNextPage);
-  const moreUsers = useSelector(getMoreUsers);
+  const dispatch = useAppDispatch();
+  const nextPage = useAppSelector(getNextPage);
+  const moreUsers = useAppSelector(getMoreUsers);
   const onFetchMore = useCallback(
     () => dispatch(fetchUsers({ page: nextPage })),
     [dispatch, nextPage]
