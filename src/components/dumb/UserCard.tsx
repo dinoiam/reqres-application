@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const UserCardComponent = styled.div`
@@ -23,16 +23,19 @@ type Props = {
   onClick: () => void;
 };
 
-export const UserCard = ({ firstName, image, lastname, email, onClick }: Props): JSX.Element => {
-  return (
-    <UserCardComponent onClick={onClick}>
-      <img src={image}></img>
-      <UserCardInfo>
-        <h3>
-          {firstName} {lastname}
-        </h3>
-        <h4>{email}</h4>
-      </UserCardInfo>
-    </UserCardComponent>
-  );
-};
+export const UserCard = memo(
+  function UserCard({ firstName, image, lastname, email, onClick }: Props): JSX.Element {
+    return (
+      <UserCardComponent onClick={onClick}>
+        <img src={image}></img>
+        <UserCardInfo>
+          <h3>
+            {firstName} {lastname}
+          </h3>
+          <h4>{email}</h4>
+        </UserCardInfo>
+      </UserCardComponent>
+    );
+  },
+  () => true
+);
