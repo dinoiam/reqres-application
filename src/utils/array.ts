@@ -23,3 +23,18 @@ export function addOrReplaceArrayOfObjectByKey<T extends { [x: string]: unknown 
   });
   return result;
 }
+
+export function filterArrayOfObjectsBy<T extends { [x: string]: unknown }>(
+  arrayOfObjects: Array<T>,
+  filter: string,
+  keys: Array<keyof T>
+): Array<T> {
+  return arrayOfObjects.filter((object) =>
+    keys.find((key) => {
+      const value = object[key];
+      if (typeof value === 'string') {
+        return value.toLowerCase().includes(filter.toLowerCase());
+      }
+    })
+  );
+}
