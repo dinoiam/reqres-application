@@ -24,10 +24,3 @@ export type FormViewProps = {
   buttonLabel: string;
   onClick: () => void;
 };
-
-export type UseFormReturnType = {
-  buttonLabel: string;
-  isButtonDisabled: boolean;
-  elements: JSX.Element[];
-  onClick: () => void;
-};

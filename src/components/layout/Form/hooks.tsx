@@ -1,6 +1,6 @@
 import { Input } from '@src/components/dumb/Input';
 import React, { useCallback, useEffect, useState } from 'react';
-import { FormElement, UseFormProps, UseFormReturnType } from './types';
+import { FormElement, UseFormProps, FormViewProps } from './types';
 
 const DEFAULT_MATCHER = /.*/;
 
@@ -19,7 +19,7 @@ export const useForm = ({
   formElements,
   buttonLabel,
   onClickButton
-}: UseFormProps): UseFormReturnType => {
+}: UseFormProps): FormViewProps => {
   const [inputsValue, setInputsValue] = useState<{ [key: string]: string }>(
     getInputsValue(formElements)
   );
