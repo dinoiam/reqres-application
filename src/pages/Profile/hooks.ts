@@ -3,7 +3,8 @@ import { useAppSelector } from '@src/hooks/useReduxhooks';
 import { createUser, fetchUsersById, updateUser } from '@src/redux/action/user';
 import { getUserById } from '@src/redux/reducer/users';
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { ProfileViewProps } from './types';
 
 export const getFormElements = (email = '', firstName = '', lastName = ''): Array<InputElement> => [
   {
@@ -32,42 +33,31 @@ export const getFormElements = (email = '', firstName = '', lastName = ''): Arra
   }
 ];
 
-export const useUpdateProfile = () => {
+export const useUpdateProfile = (): ProfileViewProps => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { userId } = useParams<{ userId: string }>();
   const user = useAppSelector((state) => getUserById(state, userId));
   if (!user) {
     dispatch(fetchUsersById({ userId }));
-  }
-  function handleClick() {
-    history.push('/');
   }
   const formElements = getFormElements(user?.email, user?.first_name, user?.last_name);
   const onClickButton = ({ email, firstName, lastName }: any) => {
     dispatch(updateUser({ email, firstName, lastName, userId }));
   };
   return {
-    handleClick,
     formElements,
     buttonLabel: 'Update user',
     onClickButton
   };
 };
 
-export const useCreateProfile = () => {
+export const useCreateProfile = (): ProfileViewProps => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  function handleClick() {
-    history.push('/');
-  }
   const formElements = getFormElements();
   const onClickButton = ({ email, firstName, lastName }: any) => {
     dispatch(createUser({ email, firstName, lastName }));
   };
   return {
-    handleClick,
     formElements,
     buttonLabel: 'Add new user',
     onClickButton

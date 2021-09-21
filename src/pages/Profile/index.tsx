@@ -11,14 +11,10 @@ const StyledProfileView = styled.div`
 export const ProfileView = ({
   buttonLabel,
   formElements,
-  handleClick,
   onClickButton
 }: ProfileViewProps): JSX.Element => {
   return (
     <StyledProfileView>
-      <button type="button" onClick={handleClick}>
-        Go to the search
-      </button>
       <Form
         formElements={formElements}
         buttonLabel={buttonLabel}
