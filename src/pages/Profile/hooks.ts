@@ -2,7 +2,7 @@ import { InputElement } from '@src/components/layout/Form/types';
 import { useAppDispatch, useAppSelector } from '@src/hooks/useReduxhooks';
 import { createUser, fetchUsersById, updateUser } from '@src/redux/action/user';
 import { getUserById } from '@src/redux/reducer/users';
-import { useDispatch } from 'react-redux';
+import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';
 import { useParams } from 'react-router-dom';
 import { ProfileViewProps } from './types';
 
@@ -12,7 +12,7 @@ export const getFormElements = (email = '', firstName = '', lastName = ''): Arra
     type: 'email',
     placeholder: 'Email',
     defaultValue: email,
-    pattern: /^\S+@\S+\.\S+$/,
+    pattern: emailPattern,
     errorMessage: 'Please enter a valid Email'
   },
   {
@@ -20,7 +20,7 @@ export const getFormElements = (email = '', firstName = '', lastName = ''): Arra
     type: 'text',
     placeholder: 'First Name',
     defaultValue: firstName,
-    pattern: /^(?!\s*$).+/,
+    pattern: notEmptyPattern,
     errorMessage: 'Please enter the first name'
   },
   {
@@ -28,7 +28,7 @@ export const getFormElements = (email = '', firstName = '', lastName = ''): Arra
     type: 'text',
     placeholder: 'Last Name',
     defaultValue: lastName,
-    pattern: /^(?!\s*$).+/,
+    pattern: notEmptyPattern,
     errorMessage: 'Please enter the last name'
   }
 ];

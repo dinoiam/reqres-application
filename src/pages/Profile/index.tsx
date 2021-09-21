@@ -6,6 +6,8 @@ import { ProfileViewProps } from './types';
 
 const StyledProfileView = styled.div`
   padding: 50px;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
 export const ProfileView = ({

@@ -1,8 +1,7 @@
 import { Input } from '@src/components/dumb/Input';
+import { everythingPattern } from '@src/utils/regExpPattern';
 import React, { useCallback, useEffect, useState } from 'react';
 import { FormElement, UseFormProps, FormViewProps } from './types';
-
-const DEFAULT_MATCHER = /.*/;
 
 export const getInputsValue = (elements: FormElement): { [key: string]: string } => {
   return elements.reduce(
@@ -11,7 +10,10 @@ export const getInputsValue = (elements: FormElement): { [key: string]: string }
   );
 };
 
-export const matchString = (stringToCheck: string, pattern: RegExp = DEFAULT_MATCHER): boolean => {
+export const matchString = (
+  stringToCheck: string,
+  pattern: RegExp = everythingPattern
+): boolean => {
   return !!stringToCheck.match(pattern);
 };
 
