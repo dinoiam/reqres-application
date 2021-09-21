@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { User } from '@src/types/user';
+import { User } from '@src/models/user';
 import { addOrReplaceArrayOfObjectByKey, addOrReplaceObjectByKey } from '@src/utils/array';
 import { RootState } from '..';
 import { createUser, fetchUsers, fetchUsersById, updateUser } from '../action/user';

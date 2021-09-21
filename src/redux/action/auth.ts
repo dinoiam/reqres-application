@@ -1,6 +1,6 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { axiosInstance } from '@src/api/axios';
-import { LoginRequest, LoginRequestSuccessful } from '@src/types/auth';
+import { LoginRequest, LoginRequestSuccessful } from '@src/models/auth';
 
 export const login = createAsyncThunk<
   LoginRequestSuccessful,

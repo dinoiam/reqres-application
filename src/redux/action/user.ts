@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '@src/api/axios';
-import { LoginRequestSuccessful } from '@src/types/auth';
-import { GetUsersResponse, User } from '@src/types/user';
+import { LoginRequestSuccessful } from '@src/models/auth';
+import { GetUsersResponse, User } from '@src/models/user';
 
 export const fetchUsers = createAsyncThunk<
   GetUsersResponse,
