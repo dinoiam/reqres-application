@@ -1,9 +1,7 @@
+import React from 'react';
 import { Button } from '@src/components/dumb/Button';
-import { Input } from '@src/components/dumb/Input';
 import { Form } from '@src/components/layout/Form';
-import InfiniteScroll from '@src/components/layout/InfiniteScroll';
-import { FilteredUserList, UserList } from '@src/components/layout/List';
-import React, { useState } from 'react';
+import { FilteredUserList } from '@src/components/layout/List';
 import styled from 'styled-components';
 import { useSearchList } from './hooks';
 
@@ -31,30 +29,21 @@ const Search = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const formElements = [
-  {
-    id: 'search',
-    type: 'text',
-    placeholder: 'search',
-    defaultValue: ''
-  }
-];
 
 export const SearchList: () => JSX.Element = () => {
-  const { onAddNewUserClick } = useSearchList();
-  const [filter, setFilter] = useState('');
+  const { onAddNewUserClick, filter, formElements, buttonLabel, onClickButton } = useSearchList();
+
   return (
     <List>
       <AddNewUser onClick={onAddNewUserClick}>ADD NEW USER</AddNewUser>
       <Search>
         <Form
           formElements={formElements}
-          onClickButton={(val) => setFilter(val.search)}
-          buttonLabel="SEARCH"
+          onClickButton={onClickButton}
+          buttonLabel={buttonLabel}
         ></Form>
       </Search>
       <FilteredUserList filter={filter}></FilteredUserList>
-      {/* <UserList></UserList> */}
     </List>
   );
 };
