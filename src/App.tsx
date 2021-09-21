@@ -90,6 +90,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `;
+import { ErrorPanel } from './components/layout/ErrorPanel';
 
 function App(): JSX.Element {
   const isUserAutenticated = useSelector(getIsUserAuthenticated);
@@ -97,6 +98,7 @@ function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
+      <ErrorPanel />
       <Router>
         <Switch>
           <ConditionalRoute condition={!isUserAutenticated} component={Login} path="/login" />
