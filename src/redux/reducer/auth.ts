@@ -7,8 +7,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isUserAuthenticated: isAuthenticated(),
-    isLoggingIn: false,
-    errorMessage: ''
+    isLoggingIn: false
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -20,10 +19,7 @@ export const authSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.isLoggingIn = true;
       })
-      .addCase(login.rejected, (state, { payload }) => {
-        if (payload) {
-          state.errorMessage = payload?.errorMessage;
-        }
+      .addCase(login.rejected, (state) => {
         state.isLoggingIn = false;
       })
       .addCase(logout.toString(), (state) => {
