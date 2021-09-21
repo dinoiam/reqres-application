@@ -1,31 +1,34 @@
+import { useAppDispatch } from '@src/hooks/useReduxhooks';
 import { login } from '@src/redux/action/auth';
-import { ChangeEventHandler, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';
+import { UseLoginType } from './types';
 
-type UseLoginType = () => {
-  buttonLoginDisabled: boolean;
-  onClickLogin: () => void;
-  setEmail: ChangeEventHandler<HTMLInputElement>;
-  setPassword: ChangeEventHandler<HTMLInputElement>;
-};
+const formElements = [
+  {
+    id: 'email',
+    type: 'email',
+    placeholder: 'Email',
+    defaultValue: '',
+    pattern: emailPattern,
+    errorMessage: 'Please enter a valid Email'
+  },
+  {
+    id: 'password',
+    type: 'password',
+    placeholder: 'Search',
+    defaultValue: '',
+    pattern: notEmptyPattern,
+    errorMessage: "Password field can't be empty"
+  }
+];
 
 export const useLogin: UseLoginType = () => {
-  const dispatch = useDispatch();
-  const [state, setState] = useState({
-    email: '',
-    password: ''
-  });
-  const buttonLoginDisabled = !state.email || !state.password;
-  const onClickLogin = () => dispatch(login({ password: state.password, email: state.email }));
-  const setEmail: ChangeEventHandler<HTMLInputElement> = (e) =>
-    setState((state) => ({ password: state.password, email: e.target.value }));
-  const setPassword: ChangeEventHandler<HTMLInputElement> = (e) =>
-    setState((state) => ({ email: state.email, password: e.target.value }));
-
+  const dispatch = useAppDispatch();
+  const onClickButton = (val: any) => dispatch(login({ password: val.password, email: val.email }));
+  const buttonLabel = 'LOGIN';
   return {
-    buttonLoginDisabled,
-    onClickLogin,
-    setEmail,
-    setPassword
+    onClickButton,
+    buttonLabel,
+    formElements
   };
 };

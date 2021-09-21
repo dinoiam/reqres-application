@@ -2,34 +2,37 @@ import React from 'react';
 import { Input } from '@src/components/dumb/Input';
 import styled from 'styled-components';
 import { useLogin } from './hooks';
+import { Form } from '@src/components/layout/Form';
 
 const LoginPage = styled.div`
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  width: 100%;
   justify-content: center;
+  width: 100%;
 `;
 
-const LoginForm = styled.div`
+const Center = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  justify-content: center;
   padding: 20px;
+  width: 300px;
 `;
 
 export const Login = (): JSX.Element => {
-  const { setEmail, setPassword, onClickLogin, buttonLoginDisabled } = useLogin();
+  const { buttonLabel, formElements, onClickButton } = useLogin();
 
   return (
     <LoginPage>
-      <LoginForm>
-        <Input type="email" onChange={setEmail} placeholder={'Email'}></Input>
-        <Input type="password" onChange={setPassword} placeholder={'Password'}></Input>
-        <button disabled={buttonLoginDisabled} onClick={onClickLogin}>
-          LOGIN
-        </button>
-      </LoginForm>
+      <Center>
+        <Form
+          formElements={formElements}
+          onClickButton={onClickButton}
+          buttonLabel={buttonLabel}
+        ></Form>
+      </Center>
     </LoginPage>
   );
 };
