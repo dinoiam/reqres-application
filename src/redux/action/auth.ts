@@ -26,5 +26,3 @@ export const login = createAsyncThunk<
 });
 
 export const logout = createAction('logout');
-
-export const loginFullfilledType = login.fulfilled.type;

@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '@src/api/axios';
-import { LoginRequestSuccessful } from '@src/models/auth';
 import { GetUsersResponse, User } from '@src/models/user';
 
 export const fetchUsers = createAsyncThunk<
@@ -15,7 +14,7 @@ export const fetchUsers = createAsyncThunk<
   }
 >('user/fetchUsers', async ({ page = 1 }, thunkAPI) => {
   try {
-    const { data } = await axiosInstance.get<GetUsersResponse>(`users?page=${page}&per_page=3`);
+    const { data } = await axiosInstance.get<GetUsersResponse>(`users?page=${page}&per_page=4`);
     return data;
   } catch (e: any) {
     const errorMessage = e?.response?.data?.error ?? '';
