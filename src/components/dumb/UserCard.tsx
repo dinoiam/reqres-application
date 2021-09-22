@@ -6,6 +6,7 @@ const UserCardComponent = styled.div`
   border-radius: 5px;
   display: flex;
   max-width: 400px;
+  min-height: 100px;
   cursor: pointer;
 `;
 
