@@ -6,21 +6,13 @@ import { login, logout } from '../action/auth';
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    isUserAuthenticated: isAuthenticated(),
-    isLoggingIn: false
+    isUserAuthenticated: isAuthenticated()
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state) => {
         state.isUserAuthenticated = true;
-        state.isLoggingIn = false;
-      })
-      .addCase(login.pending, (state) => {
-        state.isLoggingIn = true;
-      })
-      .addCase(login.rejected, (state) => {
-        state.isLoggingIn = false;
       })
       .addCase(logout.toString(), (state) => {
         state.isUserAuthenticated = false;
@@ -29,6 +21,5 @@ export const authSlice = createSlice({
 });
 
 export const getIsUserAuthenticated = (state: RootState): boolean => state.auth.isUserAuthenticated;
-export const getIsLoggingIn = (state: RootState): boolean => state.auth.isLoggingIn;
 
 export default authSlice.reducer;

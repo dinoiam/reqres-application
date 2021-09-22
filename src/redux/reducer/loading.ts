@@ -26,6 +26,9 @@ export const loadingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // .addCase(login.pending, (state) => {
+      //   state[login.typePrefix] = true;
+      // });
       .addMatcher(isPending, (state, action) => {
         if (isPending(login)(action)) state[login.typePrefix] = true;
         if (isPending(fetchUsers)(action)) state[fetchUsers.typePrefix] = true;
