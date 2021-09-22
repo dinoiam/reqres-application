@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '@src/hooks/useReduxhooks';
-import { getErrorMessage } from '@src/redux/reducer/errors';
+import { getLastErrorMessage } from '@src/redux/reducer/errors';
 import styled from 'styled-components';
 
 const Error = styled.div`
@@ -28,6 +28,6 @@ const Error = styled.div`
 `;
 
 export const ErrorPanel = (): JSX.Element | null => {
-  const errorMessage = useAppSelector(getErrorMessage);
+  const errorMessage = useAppSelector(getLastErrorMessage);
   return errorMessage ? <Error>{errorMessage}</Error> : null;
 };

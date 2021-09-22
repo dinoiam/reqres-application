@@ -8,6 +8,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FilteredUserListProps, ListViewProps } from './types';
 import { useAppSelector, useAppDispatch } from '@src/hooks/useReduxhooks';
+import { getIsFetchingUsers } from '@src/redux/reducer/loading';
 
 export const useGetUsers = (): { usersList: User[] } => {
   const usersList = useAppSelector(getUsersList);
@@ -16,8 +17,9 @@ export const useGetUsers = (): { usersList: User[] } => {
   };
 };
 
-export const useFetchMoreUser = (): Pick<ListViewProps, 'loadMore' | 'onFetchMore'> => {
+export const useFetchMoreUser = (): Pick<ListViewProps, 'loadMore' | 'onFetchMore' | 'loading'> => {
   const dispatch = useAppDispatch();
+  const isFetchingUsers = useAppSelector(getIsFetchingUsers);
   const nextPage = useAppSelector(getNextPage);
   const moreUsers = useAppSelector(getMoreUsers);
   const onFetchMore = useCallback(
@@ -25,6 +27,7 @@ export const useFetchMoreUser = (): Pick<ListViewProps, 'loadMore' | 'onFetchMor
     [dispatch, nextPage]
   );
   return {
+    loading: isFetchingUsers,
     loadMore: moreUsers,
     onFetchMore
   };
@@ -49,8 +52,9 @@ export const useUserCardRender = (usersList: User[]): Pick<ListViewProps, 'eleme
 export const useUserList = (): ListViewProps => {
   const { usersList } = useGetUsers();
   const { elements } = useUserCardRender(usersList);
-  const { loadMore, onFetchMore } = useFetchMoreUser();
+  const { loadMore, onFetchMore, loading } = useFetchMoreUser();
   return {
+    loading,
     elements,
     loadMore,
     onFetchMore
@@ -65,8 +69,9 @@ export const useFilteredUserList = ({ filter }: FilteredUserListProps): ListView
     'email'
   ]);
   const { elements } = useUserCardRender(filteredElements);
-  const { loadMore, onFetchMore } = useFetchMoreUser();
+  const { loadMore, onFetchMore, loading } = useFetchMoreUser();
   return {
+    loading,
     elements,
     loadMore,
     onFetchMore
