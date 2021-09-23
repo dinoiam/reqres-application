@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import { FilteredUserListProps, ListViewProps } from './types';
 import { useAppSelector, useAppDispatch } from '@src/hooks/useReduxhooks';
 import { getIsFetchingUsers } from '@src/redux/reducer/loading';
+import { getUpdateProfileRoot } from '@src/utils/rootPaths';
 
 export const useGetUsers = (): { usersList: User[] } => {
   const usersList = useAppSelector(getUsersList);
@@ -35,7 +36,10 @@ export const useFetchMoreUser = (): Pick<ListViewProps, 'loadMore' | 'onFetchMor
 
 export const useUserCardRender = (usersList: User[]): Pick<ListViewProps, 'elements'> => {
   const history = useHistory();
-  const onCardClick = useCallback((userId) => history.push(`/profile/${userId}`), [history]);
+  const onCardClick = useCallback(
+    (userId) => history.push(getUpdateProfileRoot(userId)),
+    [history]
+  );
   const elements = usersList.map((user) => (
     <UserCard
       key={user.id}

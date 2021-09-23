@@ -19,3 +19,16 @@ export type GetUsersResponse = {
     avatar: string;
   }>;
 };
+
+export type FetchUsersRequestPayload = {
+  page?: number;
+};
+export type FetchUsersRequestError = {
+  rejectValue: {
+    errorMessage: string;
+  };
+};
+
+export type LoginRequestSuccessful = {
+  token: string;
+};

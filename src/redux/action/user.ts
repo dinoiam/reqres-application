@@ -1,17 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '@src/api/axios';
-import { GetUsersResponse, User } from '@src/models/user';
+import {
+  GetUsersResponse,
+  User,
+  FetchUsersRequestPayload,
+  FetchUsersRequestError
+} from '@src/models/user';
 
 export const fetchUsers = createAsyncThunk<
   GetUsersResponse,
-  {
-    page?: number;
-  },
-  {
-    rejectValue: {
-      errorMessage: string;
-    };
-  }
+  FetchUsersRequestPayload,
+  FetchUsersRequestError
 >('user/fetchUsers', async ({ page = 1 }, thunkAPI) => {
   try {
     const { data } = await axiosInstance.get<GetUsersResponse>(`users?page=${page}&per_page=4`);

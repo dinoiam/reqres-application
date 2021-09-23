@@ -1,15 +1,12 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { axiosInstance } from '@src/api/axios';
-import { LoginRequest, LoginRequestSuccessful } from '@src/models/auth';
+import { ApiRequestUnsuccessful } from '@src/models';
+import { LoginRequestError, LoginRequestPayload, LoginRequestSuccessful } from '@src/models/auth';
 
 export const login = createAsyncThunk<
   LoginRequestSuccessful,
-  LoginRequest,
-  {
-    rejectValue: {
-      errorMessage: string;
-    };
-  }
+  LoginRequestPayload,
+  LoginRequestError
 >('login', async ({ email, password }, thunkAPI) => {
   try {
     const { data } = await axiosInstance.post<LoginRequestSuccessful>(`login`, {
@@ -19,8 +16,8 @@ export const login = createAsyncThunk<
     return {
       token: data.token
     };
-  } catch (e: any) {
-    const errorMessage = e?.response?.data?.error ?? '';
+  } catch (e: unknown) {
+    const errorMessage = (e as ApiRequestUnsuccessful)?.response?.data?.error ?? '';
     return thunkAPI.rejectWithValue({ errorMessage: errorMessage });
   }
 });

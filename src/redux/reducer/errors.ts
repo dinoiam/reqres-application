@@ -36,4 +36,7 @@ export const errorsSlice = createSlice({
 
 export const getLastErrorMessage = (state: RootState): string => state.errors.lastErrorMessage;
 
+export const getIsCreateOrUpdateUserOnError = (state: RootState): boolean =>
+  state.loading[createUser.typePrefix] || state.loading[updateUser.typePrefix];
+
 export default errorsSlice.reducer;
