@@ -1,5 +1,5 @@
-import { Loading } from '@src/components/dumb/Loading';
 import React from 'react';
+import { Loading } from '@src/components/dumb/Loading';
 import { useAppSelector } from '@src/hooks/useReduxhooks';
 import { getIsSomethingLoading } from '@src/redux/reducer/loading';
 import styled from 'styled-components';

@@ -1,8 +1,8 @@
-import { Form } from '@src/components/layout/Form';
 import React from 'react';
-import styled from 'styled-components';
+import { Form } from '@src/components/layout/Form';
 import { useCreateProfile, useUpdateProfile } from './hooks';
 import { ProfileViewProps } from './types';
+import styled from 'styled-components';
 
 const StyledProfileView = styled.div`
   padding: 50px;

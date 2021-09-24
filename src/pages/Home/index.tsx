@@ -1,10 +1,10 @@
+import React from 'react';
 import Layout from '@src/components/hoc/Layout';
 import { useCheckTokenOnRouteChange } from '@src/hooks/useCheckTokenOnRouteChange';
 import { createProfileRoot, homeRoot, updateProfileRoot } from '@src/utils/rootPaths';
-import React from 'react';
 import { Route } from 'react-router-dom';
-import { CreateProfile, UpdateProfile } from '../Profile';
-import { SearchList } from '../SearchList';
+import { CreateProfile, UpdateProfile } from '@src/pages/Profile';
+import { SearchList } from '@src/pages/SearchList';
 
 export const Home = (): JSX.Element => {
   useCheckTokenOnRouteChange();

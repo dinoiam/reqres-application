@@ -1,3 +1,4 @@
+import { homeRoot } from '@src/utils/rootPaths';
 import React from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 
@@ -5,7 +6,7 @@ export const ConditionalRoute = ({
   exact = true,
   component: Component,
   condition,
-  redirectPath = '/',
+  redirectPath = homeRoot,
   path,
   ...rest
 }: {
