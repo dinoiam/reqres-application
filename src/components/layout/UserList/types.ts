@@ -4,3 +4,7 @@ export type ListViewProps = {
   loading: boolean;
   onFetchMore: () => void;
 };
+
+export type FilteredUserListProps = {
+  filter: string;
+};
