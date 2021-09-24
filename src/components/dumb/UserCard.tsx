@@ -19,19 +19,19 @@ const UserCardInfo = styled.div`
 type Props = {
   image: string;
   firstName: string;
-  lastname: string;
+  lastName: string;
   email: string;
   onClick: () => void;
 };
 
 export const UserCard = memo(
-  function UserCard({ firstName, image, lastname, email, onClick }: Props): JSX.Element {
+  function UserCard({ firstName, image, lastName, email, onClick }: Props): JSX.Element {
     return (
       <UserCardComponent onClick={onClick}>
         <img src={image}></img>
         <UserCardInfo>
           <h3>
-            {firstName} {lastname}
+            {firstName} {lastName}
           </h3>
           <h4>{email}</h4>
         </UserCardInfo>

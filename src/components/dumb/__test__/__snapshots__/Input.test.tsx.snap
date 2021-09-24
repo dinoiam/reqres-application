@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdfBQB ljxwmc"
+  >
+    <input
+      class="sc-gsTEea bUaUCC undefined "
+    />
+  </div>
+</div>
+`;

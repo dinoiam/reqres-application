@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserCard snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdfBQB gDgFmX"
+  >
+    <img
+      src="test_image"
+    />
+    <div
+      class="sc-gsTEea kymFbO"
+    >
+      <h3>
+        test_firstName
+         
+        test_lastName
+      </h3>
+      <h4>
+        test_email
+      </h4>
+    </div>
+  </div>
+</div>
+`;
