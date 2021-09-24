@@ -9,6 +9,7 @@ const formElements = [
     defaultValue: ''
   }
 ];
+
 const buttonLabel = 'SEARCH';
 
 export const useSearchList = (): UseSearchList => {
