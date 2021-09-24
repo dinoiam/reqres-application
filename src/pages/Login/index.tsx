@@ -1,5 +1,4 @@
 import React from 'react';
-import { Input } from '@src/components/dumb/Input';
 import styled from 'styled-components';
 import { useLogin } from './hooks';
 import { Form } from '@src/components/layout/Form';

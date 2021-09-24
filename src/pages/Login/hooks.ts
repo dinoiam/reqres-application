@@ -3,7 +3,7 @@ import { login } from '@src/redux/action/auth';
 import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';
 import { UseLoginType } from './types';
 
-const formElements = [
+export const formElements = [
   {
     id: 'email',
     type: 'email',
@@ -24,7 +24,7 @@ const formElements = [
 
 export const useLogin: UseLoginType = () => {
   const dispatch = useAppDispatch();
-  const onClickButton = (val: any) => dispatch(login({ password: val.password, email: val.email }));
+  const onClickButton = ({ password, email }: any) => dispatch(login({ password, email }));
   const buttonLabel = 'LOGIN';
   return {
     onClickButton,
