@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-export function useActionAfterSaving(loading: boolean, error: boolean, actions: () => void): void {
+type UseActionAfterSavingProps = { loading: boolean; error: boolean; actions: () => void };
+
+export function useActionAfterSaving({ loading, error, actions }: UseActionAfterSavingProps): void {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
