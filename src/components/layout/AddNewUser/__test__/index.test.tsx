@@ -4,8 +4,8 @@ import { AddNewUser } from '../index';
 
 describe('AddNewUser', () => {
   test('it should render the label', () => {
-    const { findByText } = render(<AddNewUser></AddNewUser>);
+    const { getByText } = render(<AddNewUser></AddNewUser>);
 
-    expect(findByText('ADD NEW USER')).toBeTruthy();
+    expect(getByText('ADD NEW USER')).toBeTruthy();
   });
 });
