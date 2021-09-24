@@ -1,10 +1,9 @@
+import React, { useCallback } from 'react';
 import { UserCard } from '@src/components/dumb/UserCard';
 import { fetchUsers } from '@src/redux/action/user';
 import { getNextPage, getUsersList, getMoreUsers } from '@src/redux/reducer/users';
 import { User } from '@src/models/user';
 import { filterArrayOfObjectsBy } from '@src/utils/array';
-import React, { useCallback } from 'react';
-
 import { useHistory } from 'react-router-dom';
 import { FilteredUserListProps, ListViewProps } from './types';
 import { useAppSelector, useAppDispatch } from '@src/hooks/useReduxhooks';

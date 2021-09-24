@@ -16,4 +16,5 @@ export type ProfileViewProps = {
   formElements: FormElement;
   buttonLabel: string;
   onClickButton: (arg: { [key: string]: string }) => void;
+  buttonId: string;
 };

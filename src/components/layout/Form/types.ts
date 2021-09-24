@@ -15,6 +15,7 @@ export type FormElement = Array<InputElement>;
 export type UseFormProps = {
   formElements: FormElement;
   buttonLabel: string;
+  buttonId?: string;
   onClickButton: (values: { [key: string]: string }) => void;
 };
 
@@ -22,5 +23,6 @@ export type FormViewProps = {
   isButtonDisabled: boolean;
   elements: JSX.Element[];
   buttonLabel: string;
+  buttonId?: string;
   onClick: () => void;
 };

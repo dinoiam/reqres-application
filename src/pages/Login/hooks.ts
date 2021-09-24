@@ -29,6 +29,7 @@ export const useLogin: UseLoginType = () => {
   return {
     onClickButton,
     buttonLabel,
-    formElements
+    formElements,
+    buttonId: 'login'
   };
 };

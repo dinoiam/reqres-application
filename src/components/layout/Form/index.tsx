@@ -6,12 +6,13 @@ export const FormView = ({
   elements,
   buttonLabel,
   isButtonDisabled,
-  onClick
+  onClick,
+  buttonId
 }: FormViewProps): JSX.Element => {
   return (
     <>
       {elements}
-      <button disabled={isButtonDisabled} onClick={onClick}>
+      <button disabled={isButtonDisabled} onClick={onClick} data-testid={buttonId}>
         {buttonLabel}
       </button>
     </>

@@ -21,8 +21,14 @@ export const Header: () => JSX.Element = () => {
   const { onClickLogout, showGoBack, onClickGoBack } = useHeader();
   return (
     <HeaderComponent>
-      {showGoBack && <Button onClick={onClickGoBack}>BACK</Button>}
-      <LogOut onClick={onClickLogout}>LOGOUT</LogOut>
+      {showGoBack && (
+        <Button data-testid="back" onClick={onClickGoBack}>
+          BACK
+        </Button>
+      )}
+      <LogOut data-testid="logout" onClick={onClickLogout}>
+        LOGOUT
+      </LogOut>
     </HeaderComponent>
   );
 };

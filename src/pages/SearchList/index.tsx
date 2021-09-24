@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from '@src/components/dumb/Button';
 import { Form } from '@src/components/layout/Form';
 import { FilteredUserList } from '@src/components/layout/List';
 import styled from 'styled-components';
 import { useSearchList } from './hooks';
+import { AddNewUser } from '@src/components/layout/AddNewUser';
 
 const List = styled.div`
   align-items: center;
@@ -18,7 +18,7 @@ const List = styled.div`
   }
 `;
 
-const AddNewUser = styled(Button)`
+const AddNewUserWraper = styled.div`
   align-self: flex-start;
   margin-bottom: 20px;
 `;
@@ -31,16 +31,19 @@ const Search = styled.div`
 `;
 
 export const SearchList: () => JSX.Element = () => {
-  const { onAddNewUserClick, filter, formElements, buttonLabel, onClickButton } = useSearchList();
+  const { filter, formElements, buttonLabel, onClickButton, buttonId } = useSearchList();
 
   return (
     <List>
-      <AddNewUser onClick={onAddNewUserClick}>ADD NEW USER</AddNewUser>
+      <AddNewUserWraper>
+        <AddNewUser />
+      </AddNewUserWraper>
       <Search>
         <Form
           formElements={formElements}
           onClickButton={onClickButton}
           buttonLabel={buttonLabel}
+          buttonId={buttonId}
         ></Form>
       </Search>
       <FilteredUserList filter={filter}></FilteredUserList>

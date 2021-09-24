@@ -22,7 +22,7 @@ const Center = styled.div`
 `;
 
 export const Login = (): JSX.Element => {
-  const { buttonLabel, formElements, onClickButton } = useLogin();
+  const { buttonLabel, formElements, onClickButton, buttonId } = useLogin();
 
   return (
     <LoginPage>
@@ -31,6 +31,7 @@ export const Login = (): JSX.Element => {
           formElements={formElements}
           onClickButton={onClickButton}
           buttonLabel={buttonLabel}
+          buttonId={buttonId}
         ></Form>
       </Center>
     </LoginPage>

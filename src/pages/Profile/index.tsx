@@ -13,7 +13,8 @@ const StyledProfileView = styled.div`
 export const ProfileView = ({
   buttonLabel,
   formElements,
-  onClickButton
+  onClickButton,
+  buttonId
 }: ProfileViewProps): JSX.Element => {
   return (
     <StyledProfileView>
@@ -21,6 +22,7 @@ export const ProfileView = ({
         formElements={formElements}
         buttonLabel={buttonLabel}
         onClickButton={onClickButton}
+        buttonId={buttonId}
       ></Form>
     </StyledProfileView>
   );

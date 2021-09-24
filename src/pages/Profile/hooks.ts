@@ -13,14 +13,6 @@ import { ProfileViewProps } from './types';
 
 export const getFormElements = (email = '', firstName = '', lastName = ''): Array<InputElement> => [
   {
-    id: 'email',
-    type: 'email',
-    placeholder: 'Email',
-    defaultValue: email,
-    pattern: emailPattern,
-    errorMessage: 'Please enter a valid Email'
-  },
-  {
     id: 'firstName',
     type: 'text',
     placeholder: 'First Name',
@@ -35,6 +27,14 @@ export const getFormElements = (email = '', firstName = '', lastName = ''): Arra
     defaultValue: lastName,
     pattern: notEmptyPattern,
     errorMessage: 'Please enter the last name'
+  },
+  {
+    id: 'email',
+    type: 'email',
+    placeholder: 'Email',
+    defaultValue: email,
+    pattern: emailPattern,
+    errorMessage: 'Please enter a valid Email'
   }
 ];
 
@@ -73,7 +73,8 @@ export const useUpdateProfile = (): ProfileViewProps => {
   return {
     formElements,
     buttonLabel: 'Update user',
-    onClickButton
+    onClickButton,
+    buttonId: 'update_user'
   };
 };
 
@@ -91,6 +92,7 @@ export const useCreateProfile = (): ProfileViewProps => {
   return {
     formElements,
     buttonLabel: 'Add new user',
-    onClickButton
+    onClickButton,
+    buttonId: 'add_new_user'
   };
 };

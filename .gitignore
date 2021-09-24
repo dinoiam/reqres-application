@@ -2,3 +2,5 @@
 /dist/
 /build/
 .vscode/launch.json
+cypress/videos
+cypress/screenshots

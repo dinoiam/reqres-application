@@ -20,7 +20,8 @@ export const matchString = (
 export const useForm = ({
   formElements,
   buttonLabel,
-  onClickButton
+  onClickButton,
+  buttonId = 'form-button'
 }: UseFormProps): FormViewProps => {
   const [inputsValue, setInputsValue] = useState<{ [key: string]: string }>(
     getInputsValue(formElements)
@@ -41,6 +42,7 @@ export const useForm = ({
         placeholder={placeholder}
         value={inputsValue[id]}
         errorMessage={errorMessage}
+        data-testid={id}
       ></Input>
     );
   });
@@ -53,6 +55,7 @@ export const useForm = ({
     buttonLabel,
     isButtonDisabled,
     elements,
+    buttonId,
     onClick
   };
 };
