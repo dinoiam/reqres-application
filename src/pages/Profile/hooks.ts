@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useMemo } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { InputElement } from '@src/components/layout/Form/types';
 import { useActionAfterSaving } from '@src/hooks/useActionAfterSaving';
 import { useAppDispatch, useAppSelector } from '@src/hooks/useReduxhooks';
@@ -7,11 +9,9 @@ import { getIsCreatingOrUpdatingUser } from '@src/redux/reducer/loading';
 import { getUserById } from '@src/redux/reducer/users';
 import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';
 import { homeRoot } from '@src/utils/rootPaths';
-import { useCallback, useEffect, useMemo } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import { ProfileViewProps } from './types';
 
-export const getFormElements = (email = '', firstName = '', lastName = ''): Array<InputElement> => [
+export const getFormElements = (firstName = '', lastName = '', email = ''): Array<InputElement> => [
   {
     id: 'firstName',
     type: 'text',
@@ -45,7 +45,7 @@ export const useOnAfterSave = (): void => {
   const onAfterSave = () => {
     history.push(homeRoot);
   };
-  useActionAfterSaving(isUpdating, error, onAfterSave);
+  useActionAfterSaving({ loading: isUpdating, error, actions: onAfterSave });
 };
 
 export const useUpdateProfile = (): ProfileViewProps => {
@@ -54,7 +54,7 @@ export const useUpdateProfile = (): ProfileViewProps => {
   const { userId } = useParams<{ userId: string }>();
   const user = useAppSelector((state) => getUserById(state, userId));
   const formElements = useMemo(
-    () => getFormElements(user?.email, user?.first_name, user?.last_name),
+    () => getFormElements(user?.first_name, user?.last_name, user?.email),
     [user]
   );
   const onClickButton = useCallback(
