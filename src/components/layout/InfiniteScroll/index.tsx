@@ -1,17 +1,11 @@
 import React from 'react';
 import { useIntersectionObserver } from '@src/hooks/useIntersectionObserver';
 import styled from 'styled-components';
-
-type InfiniteScrollProps = {
-  children: React.ReactNode;
-  loadMore: boolean;
-  loading: boolean;
-  callback: () => void;
-};
+import { InfiniteScrollProps } from './types';
 
 const InfiniteScrollEnd = styled.div``;
 
-export default function InfiniteScroll({
+export function InfiniteScroll({
   children,
   loadMore,
   callback,
@@ -26,7 +20,7 @@ export default function InfiniteScroll({
         <InfiniteScrollEnd data-testid="no-more-results">NOTHING ELSE TO SHOW</InfiniteScrollEnd>
       )}
       {loadMore && <div data-testid="bottom-div" ref={bottomRef}></div>}
-      {loadMore && <div>LOADING</div>}
+      {loadMore && <div data-testid="loading">LOADING</div>}
     </>
   );
 }
