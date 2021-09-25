@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { useSearchList } from './hooks';
 import { AddNewUser } from '@src/components/layout/AddNewUser';
 import { FilteredUserList } from '@src/components/layout/UserList';
-import { formElements } from '../Login/hooks';
 import { SearchListViewProps } from './types';
 
 const List = styled.div`
