@@ -3,7 +3,7 @@
 import { useAppDispatch } from '@src/hooks/useReduxhooks';
 import { login } from '@src/redux/action/auth';
 import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';
-import { UseLoginType } from './types';
+import { LoginViewProps } from './types';
 
 export const formElements = [
   {
@@ -24,7 +24,7 @@ export const formElements = [
   }
 ];
 
-export const useLogin: UseLoginType = () => {
+export const useLogin = (): LoginViewProps => {
   const dispatch = useAppDispatch();
   const onClickButton = ({ password, email }: any) => dispatch(login({ password, email }));
   const buttonLabel = 'LOGIN';

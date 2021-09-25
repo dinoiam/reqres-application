@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLogin } from './hooks';
 import { Form } from '@src/components/layout/Form';
+import { LoginViewProps } from './types';
 
 const LoginPage = styled.div`
   align-items: center;
@@ -20,9 +21,12 @@ const Center = styled.div`
   width: 300px;
 `;
 
-export const Login = (): JSX.Element => {
-  const { buttonLabel, formElements, onClickButton, buttonId } = useLogin();
-
+export const LoginView = ({
+  formElements,
+  onClickButton,
+  buttonLabel,
+  buttonId
+}: LoginViewProps): JSX.Element => {
   return (
     <LoginPage>
       <Center>
@@ -36,3 +40,5 @@ export const Login = (): JSX.Element => {
     </LoginPage>
   );
 };
+
+export const Login = (): JSX.Element => LoginView(useLogin());
