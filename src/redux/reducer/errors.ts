@@ -34,9 +34,25 @@ export const errorsSlice = createSlice({
   }
 });
 
+/**
+ * Returns the last error message saved inside the store
+ *
+ * @param state - The redux store
+ *
+ * @returns A string that contains the error message
+ *
+ */
 export const getLastErrorMessage = (state: RootState): string => state.errors.lastErrorMessage;
 
+/**
+ * Returns true if there was erros for the createUser or the updateUser api call
+ *
+ * @param state - The redux store
+ *
+ * @returns A boolean
+ *
+ */
 export const getIsCreateOrUpdateUserOnError = (state: RootState): boolean =>
-  state.loading[createUser.typePrefix] || state.loading[updateUser.typePrefix];
+  state.errors[createUser.typePrefix] || state.errors[updateUser.typePrefix] ? true : false;
 
 export default errorsSlice.reducer;

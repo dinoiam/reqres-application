@@ -24,15 +24,19 @@ const Error = styled.p`
   font-size: 14px;
 `;
 
+type Props = InputHTMLAttributes<HTMLInputElement> & {
+  /** boolean value which indicates if the input element is on error state */
+  isOnError?: boolean;
+  /** message shown if the input element is on error state */
+  errorMessage?: string;
+};
+
 export const Input = ({
   isOnError,
   errorMessage,
   className,
   ...inputProps
-}: InputHTMLAttributes<HTMLInputElement> & {
-  isOnError?: boolean;
-  errorMessage?: string;
-}): JSX.Element => {
+}: Props): JSX.Element => {
   return (
     <InputWrapper>
       {isOnError && <Error>{errorMessage}</Error>}

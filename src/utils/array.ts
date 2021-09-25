@@ -1,3 +1,14 @@
+/**
+ * Returns the a new array with the new Object.
+ * If the Object is already present, it will be added at the same position.
+ * If the Object is not already present, it will be added at the end of the array.
+ *
+ * @param arrayOfObjects - The array of Object where to add the new Object
+ * @param newObject - The new Object to add
+ * @param key - The key on which perform the equality between the Objects inside the array and the new Object
+ * @returns A new array with the new Object
+ *
+ */
 export function addOrReplaceObjectByKey<T extends { [x: string]: unknown }>(
   arrayOfObjects: T[],
   newObject: T,
@@ -12,6 +23,17 @@ export function addOrReplaceObjectByKey<T extends { [x: string]: unknown }>(
   }
 }
 
+/**
+ * Returns the a new array merged with the new array of Objects.
+ * For each Object, If the Object is already present, it will be added at the same position.
+ * If the Object is not already present, it will be added at the end of the array.
+ *
+ * @param arrayOfObjects - The array of Objects where to add the new Object
+ * @param newObjects - The new array of Objects to add
+ * @param key - The key on which perform the equality between the Objects inside the array and the new Object
+ * @returns A new array with the new Object
+ *
+ */
 export function addOrReplaceArrayOfObjectByKey<T extends { [x: string]: unknown }>(
   arrayOfObjects: T[],
   newObjects: T[],
@@ -24,6 +46,15 @@ export function addOrReplaceArrayOfObjectByKey<T extends { [x: string]: unknown 
   return result;
 }
 
+/**
+ * Returns the a new array filtered by the keys.
+ *
+ * @param arrayOfObjects - The array of Objects to filter
+ * @param filter - The filter
+ * @param keys - The array of keys used to filter the Objects
+ * @returns A new array with the new Object
+ *
+ */
 export function filterArrayOfObjectsBy<T extends { [x: string]: unknown }>(
   arrayOfObjects: Array<T>,
   filter: string,

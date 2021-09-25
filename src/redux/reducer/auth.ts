@@ -20,6 +20,14 @@ export const authSlice = createSlice({
   }
 });
 
+/**
+ * Returns true if the user is authenticated
+ *
+ * @param state - The redux store
+ *
+ * @returns A boolean
+ *
+ */
 export const getIsUserAuthenticated = (state: RootState): boolean => state.auth.isUserAuthenticated;
 
 export default authSlice.reducer;

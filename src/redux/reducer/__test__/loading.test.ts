@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { login } from '@src/redux/action/auth';
 import { fetchUsers, createUser, updateUser } from '@src/redux/action/user';
 import loadingReducer from '../loading';

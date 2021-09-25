@@ -17,10 +17,15 @@ const UserCardInfo = styled.div`
 `;
 
 type Props = {
+  /** Image url to show inside the card */
   image: string;
+  /** A string representing the fist name */
   firstName: string;
+  /** A string representing the last name */
   lastName: string;
+  /** A string representing the email name */
   email: string;
+  /** Callback function called on click on the card */
   onClick: () => void;
 };
 

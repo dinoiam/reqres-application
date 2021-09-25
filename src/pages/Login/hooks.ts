@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useAppDispatch } from '@src/hooks/useReduxhooks';
 import { login } from '@src/redux/action/auth';
 import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';

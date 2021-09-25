@@ -41,12 +41,36 @@ export const loadingSlice = createSlice({
   }
 });
 
+/**
+ * Returns true if new users are fetching.
+ *
+ * @param state - The redux store
+ *
+ * @returns A boolean
+ *
+ */
 export const getIsFetchingUsers = (state: RootState): boolean =>
   state.loading[fetchUsers.typePrefix];
 
+/**
+ * Returns true if the create user or the update user api call is on loading
+ *
+ * @param state - The redux store
+ *
+ * @returns A boolean
+ *
+ */
 export const getIsCreatingOrUpdatingUser = (state: RootState): boolean =>
   state.loading[createUser.typePrefix] || state.loading[updateUser.typePrefix];
 
+/**
+ * Returns true if there is at least on api call loading
+ *
+ * @param state - The redux store
+ *
+ * @returns A boolean
+ *
+ */
 export const getIsSomethingLoading = (state: RootState): boolean =>
   Object.keys(state.loading).some((key) => state.loading[key]);
 

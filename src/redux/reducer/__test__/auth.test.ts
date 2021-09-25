@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { login, logout } from '@src/redux/action/auth';
 import authReducer, { getIsUserAuthenticated } from '../auth';
 

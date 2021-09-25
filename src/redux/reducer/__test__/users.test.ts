@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { User } from '@src/models/user';
-import { login } from '@src/redux/action/auth';
 import { createUser, fetchUsers, fetchUsersById, updateUser } from '@src/redux/action/user';
 import usersReducer from '../users';
 
