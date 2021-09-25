@@ -1,7 +1,7 @@
 ## HOW TO RUN THE PROJECT
 
 - npm ci
-- npm start ( the project will run on port 3000 )
+- npm run start ( the project will run on port 3000 )
 
 ## PROJECT
 
