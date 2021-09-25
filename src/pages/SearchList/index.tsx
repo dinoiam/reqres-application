@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useSearchList } from './hooks';
 import { AddNewUser } from '@src/components/layout/AddNewUser';
 import { FilteredUserList } from '@src/components/layout/UserList';
+import { formElements } from '../Login/hooks';
+import { SearchListViewProps } from './types';
 
 const List = styled.div`
   align-items: center;
@@ -30,9 +32,13 @@ const Search = styled.div`
   align-items: center;
 `;
 
-export const SearchList: () => JSX.Element = () => {
-  const { filter, formElements, buttonLabel, onClickButton, buttonId } = useSearchList();
-
+export const SearchListView = ({
+  filter,
+  formElements,
+  buttonLabel,
+  onClickButton,
+  buttonId
+}: SearchListViewProps): JSX.Element => {
   return (
     <List>
       <AddNewUserWraper>
@@ -50,3 +56,5 @@ export const SearchList: () => JSX.Element = () => {
     </List>
   );
 };
+
+export const SearchList = (): JSX.Element => SearchListView(useSearchList());
