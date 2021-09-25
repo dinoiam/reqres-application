@@ -18,6 +18,7 @@ export const errorsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addMatcher(isPending, (state, action) => {
+        state.lastErrorMessage = '';
         if (isPending(login)(action)) state[login.typePrefix] = false;
         if (isPending(fetchUsers)(action)) state[fetchUsers.typePrefix] = false;
         if (isPending(createUser)(action)) state[createUser.typePrefix] = false;

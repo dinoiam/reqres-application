@@ -7,7 +7,7 @@ const Error = styled.div`
   animation: to-left 1s linear forwards, to-left reverse 1s forwards 4s;
   background: #fd8067;
   box-shadow: 0 2px 10px 0 rgba(35, 35, 35, 0.08);
-  position: absolute;
+  position: fixed;
   padding: 20px;
   right: -100%;
   top: 20%;
