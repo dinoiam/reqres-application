@@ -2,7 +2,7 @@
 
 import { User } from '@src/models/user';
 import { createUser, fetchUsers, fetchUsersById, updateUser } from '@src/redux/action/user';
-import usersReducer from '../users';
+import usersReducer, { getMoreUsers, getNextPage, getUserById, getUsersList } from '../users';
 
 const initialState = {
   nextPage: 1,
@@ -328,5 +328,105 @@ describe('usersReducer', () => {
         );
       });
     });
+  });
+});
+
+describe('getMoreUsers', () => {
+  test('it should return moreUsers', () => {
+    expect(
+      getMoreUsers({
+        users: {
+          nextPage: 1,
+          list: [] as Array<User>,
+          moreUsers: true
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any)
+    ).toBe(true);
+  });
+});
+
+describe('getNextPage', () => {
+  test('it should return nextPage', () => {
+    expect(
+      getNextPage({
+        users: {
+          nextPage: 1,
+          list: [] as Array<User>,
+          moreUsers: true
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any)
+    ).toBe(1);
+  });
+});
+
+describe('getUserById', () => {
+  test('it should return the user with the given id', () => {
+    expect(
+      getUserById(
+        {
+          users: {
+            nextPage: 1,
+            list: [
+              {
+                id: 1,
+                email: 'initial_email_test_1',
+                first_name: 'initial_first_name_test_1',
+                last_name: 'initial_last_name_test_1',
+                avatar: 'initial_avatar_test_1'
+              },
+              {
+                id: 7,
+                email: 'email_test_7',
+                first_name: 'first_name_test_7',
+                last_name: 'last_name_test_7',
+                avatar: 'avatar_test_7'
+              }
+            ],
+            moreUsers: true
+          }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+        1
+      )
+    ).toEqual({
+      id: 1,
+      email: 'initial_email_test_1',
+      first_name: 'initial_first_name_test_1',
+      last_name: 'initial_last_name_test_1',
+      avatar: 'initial_avatar_test_1'
+    });
+  });
+});
+
+describe('getUsersList', () => {
+  test('it should return all the users', () => {
+    const list = [
+      {
+        id: 1,
+        email: 'initial_email_test_1',
+        first_name: 'initial_first_name_test_1',
+        last_name: 'initial_last_name_test_1',
+        avatar: 'initial_avatar_test_1'
+      },
+      {
+        id: 7,
+        email: 'email_test_7',
+        first_name: 'first_name_test_7',
+        last_name: 'last_name_test_7',
+        avatar: 'avatar_test_7'
+      }
+    ];
+    expect(
+      getUsersList({
+        users: {
+          nextPage: 1,
+          list,
+          moreUsers: true
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any)
+    ).toEqual(list);
   });
 });
