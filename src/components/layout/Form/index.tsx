@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from './hooks';
-import { UseFormProps, FormViewProps } from './types';
+import { FormProps, FormViewProps } from './types';
 
 export const FormView = ({
   elements,
@@ -19,4 +19,5 @@ export const FormView = ({
   );
 };
 
-export const Form = (props: UseFormProps): JSX.Element => FormView(useForm(props));
+export const Form = <T extends string>(props: FormProps<T>): JSX.Element =>
+  FormView(useForm(props));

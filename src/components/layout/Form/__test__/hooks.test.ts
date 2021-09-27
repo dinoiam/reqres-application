@@ -7,9 +7,9 @@ import {
   useIsButtonDisabled,
   useInputRender
 } from '../hooks';
-import { FormElement, UseFormProps } from '../types';
+import { FormElement, FormProps } from '../types';
 
-const formElements: FormElement = [
+const formElements: FormElement<'test_id_1' | 'test_id_2' | 'test_id_3'> = [
   {
     id: 'test_id_1',
     type: 'text',
@@ -53,7 +53,7 @@ describe('getInputsValue', () => {
 describe('useForm', () => {
   test('it should return the right buttonId, buttonLabel', () => {
     const onClickButton = jest.fn();
-    const props: UseFormProps = {
+    const props: FormProps = {
       formElements,
       buttonLabel: 'test_button_label',
       onClickButton: onClickButton
@@ -66,7 +66,7 @@ describe('useForm', () => {
 
   test('it should call onClickButton with the right object', () => {
     const onClickButton = jest.fn();
-    const props: UseFormProps = {
+    const props: FormProps = {
       formElements,
       buttonLabel: 'test_button_label',
       onClickButton: onClickButton
@@ -86,7 +86,7 @@ describe('useForm', () => {
 
 describe('useIsButtonDisabled', () => {
   test('it should return false', () => {
-    const formElements: FormElement = [
+    const formElements: FormElement<'test_id_1' | 'test_id_2' | 'test_id_3'> = [
       {
         id: 'test_id_1',
         type: 'text',
@@ -118,7 +118,7 @@ describe('useIsButtonDisabled', () => {
   });
 
   test('it should return true', () => {
-    const formElements: FormElement = [
+    const formElements: FormElement<'test_id_1' | 'test_id_2' | 'test_id_3'> = [
       {
         id: 'test_id_1',
         type: 'text',
@@ -153,7 +153,7 @@ describe('useIsButtonDisabled', () => {
 
 describe('useInputRender', () => {
   test('it should return the inputs', () => {
-    const formElements: FormElement = [
+    const formElements: FormElement<'test_id_1' | 'test_id_2'> = [
       {
         id: 'test_id_1',
         type: 'text',

@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { SearchListViewProps } from './types';
 
-const formElements = [
+const formElements: SearchListViewProps['formElements'] = [
   {
     id: 'search',
     type: 'text',
@@ -14,7 +14,10 @@ const buttonLabel = 'SEARCH';
 
 export const useSearchList = (): SearchListViewProps => {
   const [filter, setFilter] = useState('');
-  const onClickButton = useCallback((val) => setFilter(val.search), []);
+  const onClickButton: SearchListViewProps['onClickButton'] = useCallback(
+    (val) => setFilter(val.search),
+    []
+  );
 
   return {
     buttonLabel,

@@ -5,7 +5,7 @@ import { login } from '@src/redux/action/auth';
 import { emailPattern, notEmptyPattern } from '@src/utils/regExpPattern';
 import { LoginViewProps } from './types';
 
-export const formElements = [
+export const formElements: LoginViewProps['formElements'] = [
   {
     id: 'email',
     type: 'email',
@@ -26,7 +26,8 @@ export const formElements = [
 
 export const useLogin = (): LoginViewProps => {
   const dispatch = useAppDispatch();
-  const onClickButton = ({ password, email }: any) => dispatch(login({ password, email }));
+  const onClickButton: LoginViewProps['onClickButton'] = ({ password, email }: any) =>
+    dispatch(login({ password, email }));
   const buttonLabel = 'LOGIN';
   return {
     onClickButton,

@@ -1,7 +1,7 @@
 import { HTMLInputTypeAttribute } from 'react';
 
-export type InputElement = {
-  id: string;
+export type InputElement<T> = {
+  id: T;
   /** The inpunt type */
   type: HTMLInputTypeAttribute;
   /** The inpunt placeholder */
@@ -14,17 +14,17 @@ export type InputElement = {
   errorMessage?: string;
 };
 
-export type FormElement = Array<InputElement>;
+export type FormElement<T> = Array<InputElement<T>>;
 
-export type UseFormProps = {
+export type FormProps<T extends string = string> = {
   /** Array of objects that represents the form elements */
-  formElements: FormElement;
+  formElements: FormElement<T>;
   /** Label for the button inside the form */
   buttonLabel: string;
   /** Id to print as data-testid inside button element */
   buttonId?: string;
   /** Callback invoked on button click */
-  onClickButton: (values: { [key: string]: string }) => void;
+  onClickButton: (values: { [key in T]: string }) => void;
 };
 
 export type FormViewProps = {

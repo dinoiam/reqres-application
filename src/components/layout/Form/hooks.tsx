@@ -1,10 +1,15 @@
 import { Input } from '@src/components/dumb/Input';
 import { everythingPattern } from '@src/utils/regExpPattern';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { FormElement, UseFormProps, FormViewProps } from './types';
+import { FormElement, FormProps, FormViewProps } from './types';
 
-export const getInputsValue = (elements: FormElement): { [key: string]: string } => {
-  return elements.reduce((acc, { id, defaultValue }) => ({ ...acc, [id]: defaultValue ?? '' }), {});
+export const getInputsValue = <T extends string>(
+  elements: FormElement<T>
+): { [key in T]: string } => {
+  return elements.reduce(
+    (acc, { id, defaultValue }) => ({ ...acc, [id]: defaultValue ?? '' }),
+    {} as { [key in T]: string }
+  );
 };
 
 export const matchString = (
@@ -14,15 +19,13 @@ export const matchString = (
   return !!stringToCheck.match(pattern);
 };
 
-export const useForm = ({
+export const useForm = <T extends string>({
   formElements,
   buttonLabel,
   onClickButton,
   buttonId = 'form-button'
-}: UseFormProps): FormViewProps => {
-  const [inputsValue, setInputsValue] = useState<{ [key: string]: string }>(
-    getInputsValue(formElements)
-  );
+}: FormProps<T>): FormViewProps => {
+  const [inputsValue, setInputsValue] = useState(getInputsValue(formElements));
   const isButtonDisabled = useIsButtonDisabled(formElements, inputsValue);
   const onClick = useCallback(() => onClickButton(inputsValue), [inputsValue, onClickButton]);
   const elements = useInputRender(inputsValue, setInputsValue, formElements);
@@ -40,8 +43,8 @@ export const useForm = ({
   };
 };
 
-export const useIsButtonDisabled = (
-  formElements: FormElement,
+export const useIsButtonDisabled = <T extends string>(
+  formElements: FormElement<T>,
   inputsValue: { [key: string]: string }
 ): boolean => {
   return useMemo(
@@ -50,10 +53,10 @@ export const useIsButtonDisabled = (
   );
 };
 
-export const useInputRender = (
-  inputsValue: { [key: string]: string },
-  setInputsValue: (arg: { [key: string]: string }) => void,
-  formElements: FormElement
+export const useInputRender = <T extends string>(
+  inputsValue: { [key in T]: string },
+  setInputsValue: (arg: { [key in T]: string }) => void,
+  formElements: FormElement<T>
 ): Array<JSX.Element> => {
   return formElements.map(({ type, placeholder, id, errorMessage, pattern }) => {
     return (

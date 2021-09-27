@@ -5,6 +5,7 @@ import { useSearchList } from './hooks';
 import { AddNewUser } from '@src/components/layout/AddNewUser';
 import { FilteredUserList } from '@src/components/layout/UserList';
 import { SearchListViewProps } from './types';
+import { FormProps } from '@src/components/layout/Form/types';
 
 const List = styled.div`
   align-items: center;
@@ -37,7 +38,7 @@ export const SearchListView = ({
   buttonLabel,
   onClickButton,
   buttonId
-}: SearchListViewProps): JSX.Element => {
+}: SearchListViewProps & FormProps<'search'>): JSX.Element => {
   return (
     <List>
       <AddNewUserWraper>
